@@ -2,24 +2,29 @@
 #include <string>
 
 int main(void){
-    int counter{0}, sum{0}, initial[2];
+    int sum{0};
 
     std::string input;
 
     while(std::getline(std::cin, input)){
-        counter = 0;
+
+        //Forward Search
         for(char ch : input){
             if(std::isdigit(ch)){
-              if(counter == 0){
-                initial[0] = (ch - '0')*10;
-              }else{
-                initial[1] = (ch - '0');
-              };
-              counter++;
-            };
+              sum += (ch - '0')*10;
+              break;
+            }
         }
-        if(counter == 1) initial[1] = initial[0]/10;
-        sum += initial[0]+initial[1];
+
+        //Reverse Search
+        for(int i = input.length()-1; i >=0; i--){
+          char ch = input[i];
+          if(std::isdigit(ch)){
+            sum += (ch - '0');
+            break;
+          }
+        }
+
         std::cout << "The cumulative sum is:" << sum << std::endl;
     }
 };
