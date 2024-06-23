@@ -6,10 +6,14 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
+    
+    //initialise variable
     int n, i, sum = 0;
     string input;
     ifstream file("input.txt");
 
+
+    //searching
     while(getline(file,input)){
         n = input.length();
         i = 0;
